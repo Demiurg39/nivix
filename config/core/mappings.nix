@@ -1,4 +1,4 @@
-{ mkKey, ... }: let
+{ mkKey, specObj, ... }: let
   inherit (mkKey) mkKeymap;
 
   insert = [
@@ -36,5 +36,19 @@
 in {
 
   keymaps = insert ++ normal ++ visual;
+  wKeyList = [
+    (specObj [ "<leader>A" "" "" "true" ])
+    (specObj [ "<leader><leader>" "" "" "true" ])
+    (specObj [ "<leader>q" "" "quit/session" ])
+    (specObj [ "<leader><tab>" "" "tabs" ])
+    (specObj [ "z" "" "fold" ])
+    (specObj [ "g" "" "goto" ])
+    (specObj [ "[" "" "next" ])
+    (specObj [ "]" "" "prev" ])
+    (specObj [ "<leader>u" "󰔎" "ui" ])
+    (specObj [ "<leader>|" "" "vsplit" ])
+    (specObj [ "<leader>-" "" "split" ])
+  ];
+
 
 }
