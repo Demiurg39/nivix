@@ -50,5 +50,4 @@ in {
     (specObj [ "<leader>-" "" "split" ])
   ];
 
-
 }

@@ -17,5 +17,4 @@ in {
     (mkKeymap "n" "<leader>qs" "<cmd>SessionSave<CR>" "Save Session")
     (mkKeymap "n" "<leader>qD" "<cmd>SessionPurgeOrphaned<CR>" "Purge Orphaned Sessions")
   ];
-
 }

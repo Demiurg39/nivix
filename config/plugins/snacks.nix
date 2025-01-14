@@ -1,4 +1,4 @@
-{ mkKey, helpers, ... }: let 
+{ mkKey, helpers, ... }: let
   inherit (mkKey) mkKeymap;
 in {
 
@@ -14,15 +14,15 @@ in {
   };
 
   keymaps = [
-    (mkKeymap "n" "<leader>un" (helpers.mkRaw ''function() Snacks.notifier.hide() end'')        "Dismiss All Notifications")
+    (mkKeymap "n" "<leader>un" (helpers.mkRaw ''function() Snacks.notifier.hide() end'')         "Dismiss All Notifications")
     (mkKeymap "n" "<leader>." (helpers.mkRaw  ''function() Snacks.scratch() end'')               "Toggle Scratch Buffer")
     (mkKeymap "n" "<leader>S" (helpers.mkRaw  ''function() Snacks.scratch.select() end'')        "Select Scratch Buffer")
     (mkKeymap "n" "<leader>n" (helpers.mkRaw  ''function() Snacks.notifier.show_history() end'') "Notification History")
-    (mkKeymap "n" "<leader>cR" (helpers.mkRaw ''function() Snacks.rename.rename_file() end'')   "Rename File")
-    (mkKeymap "n" "<leader>gB" (helpers.mkRaw ''function() Snacks.gitbrowse() end'')            "Git Browse")
-    (mkKeymap "n" "<leader>gf" (helpers.mkRaw ''function() Snacks.lazygit.log_file() end'')     "Lazygit Current File History")
-    (mkKeymap "n" "<leader>gg" (helpers.mkRaw ''function() Snacks.lazygit() end'')              "Lazygit")
-    (mkKeymap "n" "<leader>gl" (helpers.mkRaw ''function() Snacks.lazygit.log() end'')          "Lazygit Log (cwd)")
+    (mkKeymap "n" "<leader>cR" (helpers.mkRaw ''function() Snacks.rename.rename_file() end'')    "Rename File")
+    (mkKeymap "n" "<leader>gB" (helpers.mkRaw ''function() Snacks.gitbrowse() end'')             "Git Browse")
+    (mkKeymap "n" "<leader>gf" (helpers.mkRaw ''function() Snacks.lazygit.log_file() end'')      "Lazygit Current File History")
+    (mkKeymap "n" "<leader>gg" (helpers.mkRaw ''function() Snacks.lazygit() end'')               "Lazygit")
+    (mkKeymap "n" "<leader>gl" (helpers.mkRaw ''function() Snacks.lazygit.log() end'')           "Lazygit Log (cwd)")
   ];
 
   autoCmd = [

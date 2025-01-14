@@ -1,10 +1,10 @@
 { ... }: {
 
   imports = [
+    ./bufferline.nix
     ./colorscheme.nix
     ./dashboard.nix
     ./gitsigns.nix
-    ./bufferline.nix
     ./indent-line.nix
     ./lualine.nix
     ./noice.nix

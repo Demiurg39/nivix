@@ -1,9 +1,9 @@
-{ lib, pkgs, ... }: let 
+{ lib, ... }: let
   inherit (lib) types;
 in {
 
   flake.options = {
-    opts = rec {
+    opts = {
       border = lib.mkOption {
         type = types.str;
         default = "rounded";
@@ -16,13 +16,12 @@ in {
         description = "The blend of other windows.";
       };
 
-
       transparent = lib.mkEnableOption "enable transparency" // { default = true; };
 
       lsp_format = lib.mkOption {
         type = types.str;
         default = "fallback";
-        description = 
+        description =
         ''
           option passed to Conform
           never: never use the LSP for formatting.
@@ -42,10 +41,10 @@ in {
         symbols = lib.mkOption {
           type = types.str;
           default = "sextant";
-          description = 
+          description =
           ''
             Specify character symbols to employ in final output.
-            Accepted classes for 
+            Accepted classes for
             all        ascii   braille   extra      imported  narrow   solid      ugly
             alnum      bad     diagonal  geometric  inverted  none     space      vhalf
             alpha      block   digit     half       latin     quad     stipple    wedge

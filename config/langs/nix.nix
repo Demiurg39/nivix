@@ -1,4 +1,4 @@
-{ mkKey, lib, pkgs, ... }: {
+{ lib, pkgs, ... }: {
 
   plugins = {
     lsp = {
@@ -10,5 +10,4 @@
       };
     };
   };
-
 }
