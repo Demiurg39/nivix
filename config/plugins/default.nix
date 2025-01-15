@@ -12,7 +12,6 @@
   ];
 
   plugins = {
-    neoscroll.enable = true;
     trim.enable = true;
     todo-comments.enable = true;
     nvim-surround.enable = true;
