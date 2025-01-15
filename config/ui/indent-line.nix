@@ -1,20 +1,11 @@
 { ... }: {
 
-  plugins = {
-    mini.enable = true;
-    indent-blankline = {
-      enable = true;
-      settings = {
-          indent.char = "│";
-          exclude.filetypes = [ "''" "lspinfo" "dashboard" "checkhealth" ];
-      };
+  plugins.snacks.settings.indent = {
+    enable = true;
+    animate.duration = {
+      step = 60;
+      total = 500;
     };
   };
-
-  extraConfigLua = ''
-    require('mini.indentscope').setup({
-      symbol = "│",
-    })
-  '';
 
 }
