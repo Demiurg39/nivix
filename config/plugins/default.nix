@@ -6,6 +6,7 @@
     ./copilot.nix
     ./formatter.nix
     ./lsp.nix
+    ./neo-tree.nix
     ./snacks.nix
     ./telescope.nix
     ./terminal.nix
