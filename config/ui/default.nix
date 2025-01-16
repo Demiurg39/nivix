@@ -4,7 +4,7 @@
     ./colorscheme.nix
     ./dashboard.nix
     ./gitsigns.nix
-    ./heirline.nix
+    ./bufferline.nix
     ./indent-line.nix
     ./noice.nix
     ./trouble.nix
