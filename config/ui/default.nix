@@ -6,6 +6,7 @@
     ./gitsigns.nix
     ./bufferline.nix
     ./indent-line.nix
+    ./lualine.nix
     ./noice.nix
     ./trouble.nix
     ./ufo.nix
