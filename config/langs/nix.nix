@@ -1,17 +1,24 @@
-{ lib, pkgs, ... }: {
+{ opts, lib, pkgs, self, ... }: {
 
   plugins = {
     lsp = {
       enable = lib.mkDefault true;
       inlayHints = lib.mkDefault true;
-      servers.nil_ls = {
+      servers.nixd = {
         enable = true;
-        settings.formatting.command = [ "${lib.getExe pkgs.nixpkgs-fmt}" ];
+        settings.nixpkgs.expr = "import <nixpkgs> { }";
+        settings.formatting.command = ["${lib.getExe pkgs.alejandra}"];
+        settings.options = {
+            nixvim.expr = ''(builtins.getFlake "${self}").packages.${pkgs.system}.default.options'';
+          } // lib.optionalAttrs opts.nixos.enable {
+            nixos.expr = ''(builtins.getFlake ${opts.nixos.flake}).nixosConfiguration.${opts.nixos.hostname}.options'';
+          };
       };
     };
   };
 
-  extraFiles."ftplugin/nix.lua".text = # lua
+  extraFiles."ftplugin/nix.lua".text =
+    # lua
     ''
       vim.opt.tabstop = 2
       vim.opt.shiftwidth = 2

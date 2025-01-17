@@ -32,6 +32,20 @@ in {
         '';
       };
 
+      nixos = {
+        enable = lib.mkEnableOption "enable Nixos lsp support";
+        hostname = lib.mkOption {
+          type = types.str;
+          default = "";
+          description = ''Nixos machine hostname'';
+        };
+        flakeDir = lib.mkOption {
+          type = types.str;
+          default = "";
+          description = "Nixos configuration Flake dir for passing to lsp server";
+        };
+      };
+
       dashboard = {
         wall = lib.mkOption {
           type = types.path;

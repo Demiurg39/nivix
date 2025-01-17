@@ -27,7 +27,7 @@
             inherit pkgs;
             module = import ./config; # import the module directly
             extraSpecialArgs = {
-              inherit inputs;
+              inherit inputs self;
               inherit (self) opts;
             } // import ./lib { inherit lib pkgs; } ;
           };
