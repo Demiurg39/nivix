@@ -1,4 +1,4 @@
-{
+{ helpers, ... }: {
 
   clipboard = {
     register = "unnamedplus";
@@ -31,7 +31,10 @@
     expandtab = true;
     fileformats = "unix,mac,dos";
     foldenable = true;
+    foldcolumn = "1";
+    foldlevel = 99;
     foldlevelstart = 99;
+    fillchars = (helpers.mkRaw ''[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]'');
     formatoptions = "1jcroql";
     grepformat = "%f:%l:%c:%m";
     grepprg = "rg --hidden --vimgrep --smart-case --";
