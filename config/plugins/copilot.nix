@@ -1,12 +1,11 @@
-{ mkKey
-, specObj
-, helpers
-, ...
-}:
-let
-  inherit (mkKey) mkKeymap;
-in
 {
+  mkKey,
+  specObj,
+  helpers,
+  ...
+}: let
+  inherit (mkKey) mkKeymap;
+in {
   plugins.copilot-lua = {
     enable = true;
     settings = {
@@ -17,23 +16,16 @@ in
       suggestion = {
         enabled = true;
         autoTrigger = true;
-        keymap = {
-          accept = "<C-cr>";
-          accept_word = false;
-          accept_line = false;
-          next = "<C-]>";
-          prev = "<C-[>";
-          dismiss = "<C-bs>";
-        };
       };
     };
   };
 
-  wKeyList = [ (specObj [ "<leader>a" "󰚩" "ai" ]) ];
+  wKeyList = [(specObj ["<leader>a" "󰚩" "ai"])];
 
   keymaps = [
     (mkKeymap "n" "<leader>ac"
       (helpers.mkRaw # lua
+
         ''
           function()
             if vim.g.copilot_status == nil then
@@ -49,5 +41,10 @@ in
           end
         '')
       "Toggle Copilot")
+
+    (mkKeymap "n" "<C-cr>" "<cmd>Copilot suggestion accept<cr>" "Copilot accept suggestion")
+    (mkKeymap "n" "<C-bs>" "<cmd>Copilot suggestion dismiss<cr>" "Copilot dismiss suggestion")
+    (mkKeymap "n" "<C-]>" "<cmd>Copilot suggestion next<cr>" "Copilot next suggestion")
+    (mkKeymap "n" "<C-[>" "<cmd>Copilot suggestion prev<cr>" "Copilot prev suggestion")
   ];
 }

@@ -319,12 +319,29 @@
         "type": "github"
       }
     },
+    "reactive": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736302041,
+        "narHash": "sha256-ox26LQIkNNutdh7OUMER2uveFhykgMRxvGoQ0nIRkkk=",
+        "owner": "rasulomaroff",
+        "repo": "reactive.nvim",
+        "rev": "e0a22a42811ca1e7aa7531f931c55619aad68b5d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rasulomaroff",
+        "repo": "reactive.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "beacon": "beacon",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "reactive": "reactive"
       }
     },
     "systems": {

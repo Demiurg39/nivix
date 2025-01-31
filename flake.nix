@@ -9,6 +9,9 @@
 
     beacon.url = "github:danilamihailov/beacon.nvim";
     beacon.flake = false;
+
+    reactive.url = "github:rasulomaroff/reactive.nvim";
+    reactive.flake = false;
   };
 
   outputs ={ nixvim, flake-parts, self, ... }@inputs:
