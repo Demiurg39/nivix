@@ -1,9 +1,5 @@
-{ ... }: {
+{ self, ... }: {
 
-  imports = [
-    ./firenvim.nix
-    ./neovide.nix
-    ./tfm.nix
-  ];
+  imports = self.lib.nivixlib.readFiles ./.;
 
 }

@@ -1,15 +1,10 @@
 {
   opts,
   icons,
+  self,
   ...
 }: {
-  imports = [
-    ./autocmd.nix
-    ./mappings.nix
-    ./options.nix
-    ./smart-splits.nix
-    ./treesitter.nix
-  ];
+  imports = self.lib.nivixlib.readFiles ./.;
 
   enableMan = true;
   viAlias = true;

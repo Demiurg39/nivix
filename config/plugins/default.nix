@@ -1,16 +1,6 @@
-{ ... }: {
+{ self, ... }: {
 
-  imports = [
-    ./auto-session.nix
-    ./completions.nix
-    ./copilot.nix
-    ./formatter.nix
-    ./lsp.nix
-    ./neo-tree.nix
-    ./snacks.nix
-    ./telescope.nix
-    ./terminal.nix
-  ];
+  imports = self.lib.nivixlib.readFiles ./.;
 
   plugins = {
     trim.enable = true;
