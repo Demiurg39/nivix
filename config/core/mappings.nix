@@ -1,5 +1,9 @@
-{ mkKey, specObj, helpers, ... }:
-let
+{
+  mkKey,
+  specObj,
+  helpers,
+  ...
+}: let
   inherit (mkKey) mkKeymap;
 
   insert = [
@@ -13,10 +17,11 @@ let
   normal = [
     (mkKeymap "n" "<Esc>" "<cmd>nohl<cr>" "turn off text highlighting")
 
-    (mkKeymap "n" "<A-i>" "<Esc>:bnext<cr>" "Buffer: Next")
-    (mkKeymap "n" "<A-m>" "<Esc>:bprev<cr>" "Buffer: Previous")
+    (mkKeymap "n" "<A-i>" "<cmd>bnext<cr>" "Buffer: Next")
+    (mkKeymap "n" "<A-m>" "<cmd>bprev<cr>" "Buffer: Previous")
     (mkKeymap "n" "<A-q>"
       (helpers.mkRaw # lua
+
         ''
           function()
             local wins = vim.api.nvim_tabpage_list_wins(0)
@@ -44,13 +49,10 @@ let
 
     (mkKeymap "n" "<leader><tab>i" "<cmd>tabn<cr>" "Tab: Next Tab")
     (mkKeymap "n" "<leader><tab>m" "<cmd>tabp<cr>" "Tab: Previous Tab")
-    (mkKeymap "n" "<leader><tab>d" "<cmd>tabclose<cr>" "Tab: close Tab")
     (mkKeymap "n" "<leader><tab>n" "<cmd>tabnew<cr>" "Tab: new Tab")
 
     (mkKeymap "n" "<leader>sv" "<cmd>vsplit<cr>" "Window: split vertically")
     (mkKeymap "n" "<leader>sh" "<cmd>split<cr>" "Window: split horizontally")
-    (mkKeymap "n" "<leader>sd" "<cmd>close<cr>" "Window: close split")
-
   ];
   visual = [
     (mkKeymap "v" "<" "<gv" "Indent: increment")
@@ -59,23 +61,20 @@ let
     (mkKeymap "v" "<A-j>" ":m '>+1<cr>gv=gv" "Move: line Down")
     (mkKeymap "v" "<A-k>" ":m '<-2<cr>gv=gv" "Move: line Up")
   ];
-
-in
-{
-
+in {
   keymaps = insert ++ normal ++ visual;
-  wKeyList = [
-    (specObj [ "<leader>A" "" "" "true" ])
-    (specObj [ "<leader><leader>" "" "" "true" ])
-    (specObj [ "<leader>q" "" "quit/session" ])
-    (specObj [ "<leader><tab>" "" "tabs" ])
-    (specObj [ "z" "" "fold" ])
-    (specObj [ "g" "" "goto" ])
-    (specObj [ "[" "" "next" ])
-    (specObj [ "]" "" "prev" ])
-    (specObj [ "<leader>u" "󰔎" "ui" ])
-    (specObj [ "<leader>|" "" "vsplit" ])
-    (specObj [ "<leader>-" "" "split" ])
-  ];
 
+  wKeyList = [
+    (specObj ["<leader>A" "" "" "true"])
+    (specObj ["<leader><leader>" "" "" "true"])
+    (specObj ["<leader>q" "" "quit/session"])
+    (specObj ["<leader><tab>" "" "tabs"])
+    (specObj ["z" "" "fold"])
+    (specObj ["g" "" "goto"])
+    (specObj ["[" "" "next"])
+    (specObj ["]" "" "prev"])
+    (specObj ["<leader>u" "󰔎" "ui"])
+    (specObj ["<leader>|" "" "vsplit"])
+    (specObj ["<leader>-" "" "split"])
+  ];
 }
