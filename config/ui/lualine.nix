@@ -1,4 +1,4 @@
-{ icons, ... }: let 
+{ icons, ... }: let
   separators = {
     left = "";
     right = "";
@@ -9,7 +9,7 @@ in {
   plugins.lualine = {
     enable = true;
     settings.options = {
-      theme = let 
+      theme = let
         transparent = {
           a.fg = "none";
           c.bg = "none";
@@ -82,7 +82,7 @@ in {
         local lsp_clients = vim.lsp.get_active_clients()
         for _, client in ipairs(lsp_clients) do
           if client.name == "copilot" then
-            return "%#SLGreen#" .. "${icons.kind.Copilot}"
+            return "%#SLGreen#" .. "${icons.ui.Copilot}"
           end
         end
          return ""
