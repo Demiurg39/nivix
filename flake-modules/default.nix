@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./git-hooks.nix
+    ./lib.nix
     ../variables
   ];
 

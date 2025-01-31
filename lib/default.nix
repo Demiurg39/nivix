@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }: {
+{
+  lib,
+  pkgs,
+  ...
+}: rec {
 
   mkKeymap = mode: key: action: desc: {
     inherit key;
@@ -14,11 +18,10 @@
 
   mkPkgs = name: src: pkgs.vimUtils.buildVimPlugin { inherit name src; };
 
-  readDir = builtins.map (fn: ./${fn}) (builtins.filter (fn: fn != "default.nix") (builtins.attrNames (builtins.readDir ./.)));
+  # TODO: substitute all mkKey to mkKeymap
+  mkKey = {inherit mkKeymap;};
 
-  specObj = # with builtins;
-    list:
-    let
+  specObj = list: let
       len = builtins.length list;
       first = lib.optionalAttrs (builtins.elemAt list 0 != "") { __unkeyed = builtins.elemAt list 0; };
       second = lib.optionalAttrs (builtins.elemAt list 1 != "") { icon = builtins.elemAt list 1; };
