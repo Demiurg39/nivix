@@ -1,6 +1,4 @@
-{mkKey, ...}: let
-  inherit (mkKey) mkKeymap;
-in {
+{mkKeymap, ...}: {
   plugins.smart-splits.enable = true;
 
   keymaps = [
