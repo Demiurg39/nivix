@@ -1,6 +1,7 @@
 { ... }: {
 
   imports = [
+    ./beacon.nix
     ./bufferline.nix
     ./colorscheme.nix
     ./dashboard.nix

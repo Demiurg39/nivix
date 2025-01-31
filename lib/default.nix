@@ -16,6 +16,8 @@
     mkKeymap' = key: mode: action: (mkKeymap key mode action null);
   };
 
+  mkPkgs = name: src: pkgs.vimUtils.buildVimPlugin { inherit name src; };
+
   specObj = # with builtins;
     list: let
       len = builtins.length list;

@@ -6,12 +6,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    beacon.url = "github:danilamihailov/beacon.nvim";
+    beacon.flake = false;
   };
 
   outputs ={ nixvim, flake-parts, self, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
 
-      imports = [ ./variables/default.nix ];
+      imports = [ ./variables ];
 
       systems = [
         "x86_64-linux"
