@@ -7,7 +7,7 @@
   imports = [
     ./git-hooks.nix
     ./lib.nix
-    ../variables
+    ./options.nix
   ];
 
   perSystem = {
@@ -23,14 +23,13 @@
       module = import ../config; # import the module directly
       extraSpecialArgs = {
           inherit inputs system self;
-          # TODO: get rid off this legacy thing and substitute it with something more useful
           inherit (self) opts;
       } // import ../lib {inherit lib pkgs;};
     };
-    nvim = nixvim'.makeNixvimWithModule nixvimModule;
+    nixvim = nixvim'.makeNixvimWithModule nixvimModule;
   in {
     checks.default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
 
-    packages.default = nvim;
+    packages.default = nixvim;
   };
 }
