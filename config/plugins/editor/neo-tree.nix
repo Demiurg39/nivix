@@ -1,7 +1,9 @@
-{ mkKey, specObj, icons, ... }: let
-  inherit (mkKey) mkKeymap;
-in {
-
+{
+  mkKeymap,
+  specObj,
+  icons,
+  ...
+}: {
   wKeyList = [ (specObj [ "<leader>e" "" ]) ];
 
   plugins.neo-tree = {
@@ -47,5 +49,4 @@ in {
   keymaps = [
     ( mkKeymap "n" "<leader>e" "<cmd>Neotree toggle<cr>" "Explorer NeoTree (cwd)" )
   ];
-
 }

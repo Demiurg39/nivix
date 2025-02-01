@@ -1,6 +1,11 @@
-{ mkKey, specObj, helpers, pkgs, lib, ... }: let
-  inherit (mkKey) mkKeymap;
-in {
+{
+  mkKeymap,
+  specObj,
+  helpers,
+  pkgs,
+  lib,
+  ...
+}: {
 
   wKeyList = [
     (specObj [ "<leader>s" "" "search" ])
@@ -67,14 +72,12 @@ in {
     (mkKeymap "n" "<leader>s'" "<cmd>Telescope registers<cr>"                   "Registers")
     (mkKeymap "n" "<leader>s/" "<cmd>Telescope current_buffer_fuzzy_find<cr>"   "Buffer")
     (mkKeymap "n" "<leader>s:" "<cmd>Telescope commands<cr>"                    "Commands")
-    (mkKeymap "n" "<leader>ss" "<cmd>Telescope diagnostics bufnr=0<cr>"         "Document Diagnostics")
-    (mkKeymap "n" "<leader>sS" "<cmd>Telescope diagnostics<cr>"                 "Workspace Diagnostics")
+    (mkKeymap "n" "<leader>sd" "<cmd>Telescope diagnostics bufnr=0<cr>"         "Document Diagnostics")
+    (mkKeymap "n" "<leader>sD" "<cmd>Telescope diagnostics<cr>"                 "Workspace Diagnostics")
     (mkKeymap "n" "<leader>st" "<cmd>TodoTelescope<cr>"                         "Todo")
     (mkKeymap "n" "<leader>sT" "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>" "Todo/Fix/Fixme")
     (mkKeymap "n" "<leader>sm" "<cmd>Telescope man_pages<cr>"                   "Man Pages")
     (mkKeymap "n" "<leader>su" "<cmd>Telescope undo<cr>"                        "Undo")
     (mkKeymap "n" "<leader>sq" "<cmd>Telescope quickfix<cr>"                    "Quickfix List")
-    (mkKeymap "n" "<leader>cc" "<cmd>Telescope colorscheme<cr>"                 "Colorschmes")
   ];
-
 }

@@ -1,11 +1,9 @@
 {
-  mkKey,
+  mkKeymap,
   specObj,
   helpers,
   ...
-}: let
-  inherit (mkKey) mkKeymap;
-in {
+}: {
   plugins.copilot-lua = {
     enable = true;
     settings = {

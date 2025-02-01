@@ -1,5 +1,8 @@
-{ opts, specObj, ... }: {
-
+{
+  opts,
+  specObj,
+  ...
+}: {
   plugins = {
     otter.enable = true;
     lsp = {
@@ -104,5 +107,4 @@
   wKeyList = [
     (specObj [ "<leader>l" "󰿘" "lsp" ])
   ];
-
 }

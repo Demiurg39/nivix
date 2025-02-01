@@ -1,9 +1,8 @@
-{ mkKey, specObj, ... }:
-let
-  inherit (mkKey) mkKeymap;
-in
 {
-
+  mkKeymap,
+  specObj,
+  ...
+}: {
   plugins.trouble.enable = true;
   wKeyList = [ (specObj [ "<leader>x" "" "diagnostics/quickfix" ]) ];
 
@@ -18,5 +17,4 @@ in
     (mkKeymap "n" "<leader>xl" "<cmd>Trouble lsp toggle focus=false win.position=right<cr>" "LSP Definitions / references / ... (Trouble)")
     (mkKeymap "n" "<leader>xs" "<cmd>Trouble symbols toggle focus=false<cr>" "Symbols (Trouble)")
   ];
-
 }

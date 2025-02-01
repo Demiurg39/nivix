@@ -8,7 +8,6 @@
         indent.enable = true;
       };
     };
-
     treesitter-textobjects.enable = true;
   };
 }

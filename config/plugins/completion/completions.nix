@@ -1,4 +1,8 @@
-{ opts, helpers, ... }: {
+{
+  opts,
+  helpers,
+  ...
+}: {
 
   highlightOverride = {
     PMenu = {

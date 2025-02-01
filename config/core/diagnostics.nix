@@ -1,15 +1,8 @@
 {
   icons,
-  lib,
+  opts,
   ...
 }: {
-  options = {
-    diagnostics = {
-
-    };
-  };
-
-  config = {
   extraConfigLua = ''
     local signs = {
       Hint = "${icons.diagnostics.BoldHint}",
@@ -29,11 +22,10 @@
       signs = true,
       severity_sort = true,
       float = {
-        border = "round",
+        border = "${opts.border}",
         source = "always",
         focusable = false,
       }
     })
   '';
-  };
 }

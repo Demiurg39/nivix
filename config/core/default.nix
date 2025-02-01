@@ -1,6 +1,5 @@
 {
   opts,
-  icons,
   self,
   ...
 }: {

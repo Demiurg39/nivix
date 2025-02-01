@@ -1,10 +1,8 @@
 {
   mkKeymap,
-  specObj,
   helpers,
   ...
 }: let
-
   insert = [
     (mkKeymap "i" "<C-b>" "<Esc>^i" "Move: beginning of line")
     (mkKeymap "i" "<C-e>" "<End>" "Move: end of line")
@@ -50,8 +48,8 @@
     (mkKeymap "n" "<leader><tab>m" "<cmd>tabp<cr>" "Tab: Previous Tab")
     (mkKeymap "n" "<leader><tab>n" "<cmd>tabnew<cr>" "Tab: new Tab")
 
-    (mkKeymap "n" "<leader>sv" "<cmd>vsplit<cr>" "Window: split vertically")
-    (mkKeymap "n" "<leader>sh" "<cmd>split<cr>" "Window: split horizontally")
+    (mkKeymap "n" "<leader>\\" "<cmd>vsplit<cr>" "Window: split vertically")
+    (mkKeymap "n" "<leader>|" "<cmd>split<cr>" "Window: split horizontally")
   ];
   visual = [
     (mkKeymap "v" ">" ">gv" "Indent: increment")
@@ -62,18 +60,4 @@
   ];
 in {
   keymaps = insert ++ normal ++ visual;
-
-  wKeyList = [
-    (specObj ["<leader>A" "" "" "true"])
-    (specObj ["<leader><leader>" "" "" "true"])
-    (specObj ["<leader>q" "" "session"])
-    (specObj ["<leader><tab>" "" "tabs"])
-    (specObj ["z" "" "fold"])
-    (specObj ["g" "" "goto"])
-    (specObj ["[" "" "next"])
-    (specObj ["]" "" "prev"])
-    (specObj ["<leader>u" "󰔎" "ui"])
-    (specObj ["<leader>|" "" "vsplit"])
-    (specObj ["<leader>-" "" "split"])
-  ];
 }
