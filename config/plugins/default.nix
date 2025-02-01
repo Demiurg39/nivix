@@ -4,11 +4,11 @@
 
   plugins = {
     dressing.enable = true;
+    lastplace.enable = true;
+    nvim-surround.enable = true;
+    oil.enable = true;
     trim.enable = true;
     todo-comments.enable = true;
-    nvim-surround.enable = true;
-    lastplace.enable = true;
-    oil.enable = true;
     web-devicons.enable = true;
 
     fidget = {
