@@ -1,21 +1,12 @@
-{ self, ... }: {
-  # imports = self.lib.nivixlib.readFiles ./.;
+{lib, ...}: {
   imports = [
     ./addons
     ./core
     ./integrations
     ./langs
-    ./ui
   ];
 
+  addons.enable = true;
   integrations.enable = false;
   langs.enable = true;
-  addons = {
-    enable = true;
-    # completion.enable = true;
-    # editor.enable = true;
-    # lsp.enable = true;
-    # utils.enable = true;
-  };
-  # ui.enable = true;
 }

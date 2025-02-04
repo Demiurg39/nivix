@@ -1,32 +1,38 @@
-{ mkKey, helpers, ... }:
-let
-  inherit (mkKey) mkKeymap;
-in
 {
+  mkKeymap,
+  helpers,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.addons.utils.snacks.terminal;
+in {
+  options.addons.utils.snacks.terminal.enable = lib.mkEnableOption "Enable snacks terminal module";
 
-  plugins.snacks.settings.terminal.win.style.keys.term_normal = (helpers.listToUnkeyedAttrs [
-    "<esc>"
-    (helpers.mkRaw ''
-      function(self)
-        self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
-        if self.esc_timer:is_active() then
-          self.esc_timer:stop()
-          vim.cmd("stopinsert")
-        else
-          self.esc_timer:start(200, 0, function() end)
-          return "<esc>"
+  config = lib.mkIf cfg.enable {
+    plugins.snacks.settings.terminal.win.style.keys.term_normal = (helpers.listToUnkeyedAttrs [
+      "<esc>"
+      (helpers.mkRaw ''
+        function(self)
+          self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+          if self.esc_timer:is_active() then
+            self.esc_timer:stop()
+            vim.cmd("stopinsert")
+          else
+            self.esc_timer:start(200, 0, function() end)
+            return "<esc>"
+          end
         end
-      end
-    '')
-  ]) // {
-    mode = "t";
-    expr = true;
-    desc = "double escape to normal mode";
+      '')
+    ]) // {
+      mode = "t";
+      expr = true;
+      desc = "double escape to normal mode";
+    };
+
+    keymaps = [
+      (mkKeymap "n" "<c-/>" "<cmd>lua Snacks.terminal()<cr>" "Toggle Terminal")
+      (mkKeymap "t" "<c-/>" "<cmd>lua Snacks.terminal()<cr>" "Toggle Terminal")
+    ];
   };
-
-  keymaps = [
-    (mkKeymap "n" "<c-/>" "<cmd>lua Snacks.terminal()<cr>" "Toggle Terminal")
-    (mkKeymap "t" "<c-/>" "<cmd>lua Snacks.terminal()<cr>" "Toggle Terminal")
-  ];
-
 }

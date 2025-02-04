@@ -1,11 +1,20 @@
-{ inputs, mkPkgs, ... }: {
+{
+  config,
+  inputs,
+  mkPkgs,
+  lib,
+  ...
+}: let
+  cfg = config.addons.ui.reactive;
+in {
+  options.addons.ui.reactive.enable = lib.mkEnableOption "Enable reactive module";
 
-  extraPlugins = [
-    (mkPkgs "reactive" inputs.reactive)
-  ];
+  config = lib.mkIf cfg.enable {
+    extraPlugins = [
+      (mkPkgs "reactive" inputs.reactive)
+    ];
 
-  extraConfigLua = # lua
-    ''
+    extraConfigLua = ''
       require("reactive").setup({
         builtin = {
           cursorline = true,
@@ -13,6 +22,6 @@
           modemsg = true,
         },
       })
-    '';
-
+      '';
+  };
 }

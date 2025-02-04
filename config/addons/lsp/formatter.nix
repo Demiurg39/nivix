@@ -1,31 +1,29 @@
 {
   mkKeymap,
   config,
-  lib,
   pkgs,
+  lib,
   ...
-}: {
-  options = {
-    formatter = with lib.types; {
-      lsp_format = lib.mkOption {
-        type = types.str;
-        default = "fallback";
-        description =
-        ''
-          option passed to Conform
-          never: never use the LSP for formatting.
-          fallback: LSP formatting is used when no other formatters are available.
-          prefer: Use only LSP formatting when available.
-          first: LSP formatting is used when available and then other formatters.
-          last: Other formatters are used then LSP formatting when available.
-        '';
-      };
+}: let
+  cfg = config.addons.lsp.formatter;
+in {
+  options.addons.lsp.formatter = with lib.types; {
+    enable = lib.mkEnableOption "Enable formatter module";
+    lsp_format = lib.mkOption {
+      type = types.str;
+      default = "fallback";
+      description = ''
+        option passed to Conform
+        never: never use the LSP for formatting.
+        fallback: LSP formatting is used when no other formatters are available.
+        prefer: Use only LSP formatting when available.
+        first: LSP formatting is used when available and then other formatters.
+        last: Other formatters are used then LSP formatting when available.
+      '';
     };
   };
 
-  config = let
-    cfg = config.formatter;
-  in {
+  config = lib.mkIf cfg.enable {
     plugins.conform-nvim = {
       enable = true;
       settings = {
@@ -44,6 +42,6 @@
         };
       };
     };
-    keymaps = [ ( mkKeymap "n" "<leader>lf" "<cmd>lua require('conform').format()<cr>" "Format Buffer") ];
+    keymaps = [(mkKeymap "n" "<leader>lf" "<cmd>lua require('conform').format()<cr>" "Format Buffer")];
   };
 }

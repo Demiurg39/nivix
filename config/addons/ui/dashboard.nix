@@ -1,45 +1,44 @@
 {
-  lib,
   helpers,
   config,
-  pkgs,
   self,
+  pkgs,
+  lib,
   ...
-}: {
-  options = {
-    dashboard = with lib.types; {
-      wall = lib.mkOption {
-        type = types.path;
-        default = "${self}/assets/dashboard.png";
-        description = "img which appears at dashboard";
-      };
-      symbols = lib.mkOption {
-        type = types.str;
-        default = "sextant";
-        description =
-        ''
-          Specify character symbols to employ in final output.
-          Accepted classes for
-          all        ascii   braille   extra      imported  narrow   solid      ugly
-          alnum      bad     diagonal  geometric  inverted  none     space      vhalf
-          alpha      block   digit     half       latin     quad     stipple    wedge
-          ambiguous  border  dot       hhalf      legacy    sextant  technical  wide
+}: let
+  cfg = config.addons.ui.dashboard;
+in {
+  options.addons.ui.dashboard = with lib.types; {
+    enable = lib.mkEnableOption "Enable Snacks dashboard module";
+    wall = lib.mkOption {
+      type = types.path;
+      default = "${self}/assets/dashboard.png";
+      description = "img which appears at dashboard";
+    };
+    symbols = lib.mkOption {
+      type = types.str;
+      default = "sextant";
+      description =
+      ''
+        Specify character symbols to employ in final output.
+        Accepted classes for
+        all        ascii   braille   extra      imported  narrow   solid      ugly
+        alnum      bad     diagonal  geometric  inverted  none     space      vhalf
+        alpha      block   digit     half       latin     quad     stipple    wedge
+        ambiguous  border  dot       hhalf      legacy    sextant  technical  wide
 
-          These can be combined with + and -, e.g. block+border-diagonal or all-wide.
-        '';
-      };
-      fg-only = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "If true, includes '--fg-only' in the command; otherwise, excludes it.";
-      };
+        These can be combined with + and -, e.g. block+border-diagonal or all-wide.
+      '';
+    };
+    fg-only = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "If true, includes '--fg-only' in the command; otherwise, excludes it.";
     };
   };
 
-  config = {
-    plugins.snacks.settings.dashboard = let
-      cfg = config.dashboard;
-    in {
+  config = lib.mkIf cfg.enable {
+    plugins.snacks.settings.dashboard = {
       enable = true;
       preset = {
         keys = [
