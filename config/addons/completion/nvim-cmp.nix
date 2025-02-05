@@ -36,6 +36,7 @@ in {
                   require("luasnip").lsp_expand(args.body)
               end
             '';
+
           window = {
             documentation.border = "${opts.border}";
             completion = {
@@ -43,50 +44,51 @@ in {
               scrollbar = false;
             };
           };
+
           sources = [
-            {name = "luasnip";}
             {name = "nvim_lsp";}
             {name = "nvim_lsp_signature_help";}
-            {name = "path";}
+            {name = "nvim_lsp_document_symbol";}
+            {name = "treesitter";}
+            {name = "luasnip";}
             {name = "buffer";}
+            {name = "path";}
           ];
-          mapping =
-            helpers.mkRaw # lua
 
-            ''
-              cmp.mapping.preset.insert({
-                ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-                ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          mapping = helpers.mkRaw ''
+            cmp.mapping.preset.insert({
+              ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+              ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 
-                ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-                ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+              ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+              ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 
-                ["<C-q>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+              ["<C-q>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 
-                ["<C-cr>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false }),
+              ["<C-cr>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false }),
 
-                ["<A-l>"] = cmp.mapping(function(fallback)
-                  local luasnip = require("luasnip")
-                  if luasnip.expand_or_locally_jumpable() then
-                    luasnip.expand_or_jump()
-                  elseif luasnip.jumpable(1) then
-                    luasnip.jump(1)
-                  else
-                    fallback()
-                  end
-                end, { "i", "s" }),
+              ["<A-l>"] = cmp.mapping(function(fallback)
+                local luasnip = require("luasnip")
+                if luasnip.expand_or_locally_jumpable() then
+                  luasnip.expand_or_jump()
+                elseif luasnip.jumpable(1) then
+                  luasnip.jump(1)
+                else
+                  fallback()
+                end
+              end, { "i", "s" }),
 
-                ["<A-h>"] = cmp.mapping(function(fallback)
-                  local luasnip = require("luasnip")
-                  if luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
-                  else
-                    fallback()
-                  end
-                end, { "i", "s" }),
+              ["<A-h>"] = cmp.mapping(function(fallback)
+                local luasnip = require("luasnip")
+                if luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
+                else
+                  fallback()
+                end
+              end, { "i", "s" }),
 
-              })
-            '';
+            })
+          '';
         };
       };
     };
