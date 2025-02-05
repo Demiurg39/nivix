@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.addons.utils.fidget;
+  cfg = config.addons.lsp.fidget;
 in {
-  options.addons.utils.fidget.enable = lib.mkEnableOption "Enable fidget module";
+  options.addons.lsp.fidget.enable = lib.mkEnableOption "Enable fidget module";
 
   config = lib.mkIf cfg.enable {
     plugins.fidget = {

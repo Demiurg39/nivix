@@ -12,6 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     addons.lsp = {
+      fidget.enable = true;
       formatter.enable = true;
       lspsaga.enable = true;
       trouble.enable = true;
