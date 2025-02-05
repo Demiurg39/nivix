@@ -12,7 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     langs = {
-      c.enable = false;
+      c-cpp.enable = false;
       java.enable = false;
       lua.enable = false;
       markdown.enable = false;
