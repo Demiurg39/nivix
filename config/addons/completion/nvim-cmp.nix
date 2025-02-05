@@ -11,6 +11,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     addons.completion.copilot.enable = false;
+    addons.completion.lspkind.enable = true;
 
     highlightOverride = {
       PMenu = {
@@ -20,7 +21,6 @@ in {
     };
 
     plugins = {
-      lspkind.enable = true;
       luasnip.enable = true;
 
       cmp_luasnip.enable = true;
