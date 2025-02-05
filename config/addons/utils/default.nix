@@ -13,6 +13,7 @@ in {
   config = lib.mkIf cfg.enable {
     addons.utils = {
       auto-session.enable = true;
+      colorizer.enable = true;
       snacks.enable = true;
       snacks.terminal.enable = true;
     };
