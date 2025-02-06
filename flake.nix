@@ -17,6 +17,9 @@
 
     reactive.url = "github:rasulomaroff/reactive.nvim";
     reactive.flake = false;
+
+    typst-preview.url = "github:chomosuke/typst-preview.nvim";
+    typst-preview.flake = false;
   };
 
   outputs = { flake-parts, ... } @ inputs:

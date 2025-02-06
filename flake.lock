@@ -387,7 +387,8 @@
         "git-hooks-nix": "git-hooks-nix",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
-        "reactive": "reactive"
+        "reactive": "reactive",
+        "typst-preview": "typst-preview"
       }
     },
     "systems": {
@@ -423,6 +424,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "typst-preview": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738614723,
+        "narHash": "sha256-zq/sxZLD10IXwVMJtlZX/akaoeu89ivgqHs6PyHFNi4=",
+        "owner": "chomosuke",
+        "repo": "typst-preview.nvim",
+        "rev": "00ff6829030f302e8ff24d0e3a68625dd1a3ac40",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chomosuke",
+        "repo": "typst-preview.nvim",
         "type": "github"
       }
     }
