@@ -20,7 +20,7 @@
     nixvimLib = inputs.nixvim.lib.${system};
     nixvimModule = {
       inherit pkgs;
-      module = import ../config; # import the module directly
+      module = import ../modules; # import the module directly
       extraSpecialArgs = {
           inherit inputs system self;
           inherit (self) opts;

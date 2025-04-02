@@ -9,5 +9,9 @@ in {
     enable = lib.mkEnableOption "Enable shell language module";
   };
 
-  config = lib.mkIf cfg.enable {};
+  config = lib.mkIf cfg.enable {
+    plugins.lsp.servers.nushell = {
+      enable = true;
+    };
+  };
 }

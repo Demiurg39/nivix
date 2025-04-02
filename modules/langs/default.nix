@@ -19,7 +19,7 @@ in {
       nix.enable = true;
       python.enable = false;
       shell.enable = false;
-      typst.enable = false;
+      typst.enable = true;
     };
   };
 }
